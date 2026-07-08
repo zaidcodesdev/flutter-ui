@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main(){
@@ -17,234 +18,171 @@ class MyApp extends StatelessWidget{
 }
 
   class HomePage extends StatelessWidget{
-  
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passWordController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
   @override
   Widget build(BuildContext context) {
       return Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.orangeAccent,
           title: Text("Home"),
           centerTitle:true
         ),
-
-        body:SizedBox(
-          width: 300,
-          height: 500,
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadiusGeometry.circular(11)
-            ),
-            elevation: 15,
-            child: Padding(
-              padding: const EdgeInsets.all(7.0),
-              child: Stack(
-                children: [
-                     Container(
-                      width: 300,
-                      height: 500,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(11),
-                        image: DecorationImage(image: NetworkImage("https://upload.wikimedia.org/wikipedia/commons/a/a4/Salman_Khan_snapped_at_the_Angry_Young_Men_trailer_launch.jpg"),fit: BoxFit.cover)
-                      ),
-                    ),
-                    Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            decoration:BoxDecoration(
-                              borderRadius: BorderRadius.vertical(bottom: Radius.circular(11)),
-                              gradient: LinearGradient(colors: [
-                                Colors.transparent,
-                                Colors.blue.shade50
-                              ],begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                stops: [0.1, 0.9]
-                              )
-                            ),
-                            padding: const EdgeInsets.symmetric(horizontal: 11.0),
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Text("Salman Khan", style: TextStyle(fontSize: 19, color: Colors.white,fontWeight: FontWeight(50)),),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
-                                    Image.asset("assets/Icons/ic_approved.png", width: 22, height: 25,)
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Expanded(child: Text("Product designer who focuses on simplicity and usability" , style: TextStyle(fontWeight:FontWeight.w500, fontSize: 13, color: Colors.grey),)),
-
-
-
-
-                                  ],
-                                ),SizedBox(
-                                  height: 10,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Image.asset("assets/Icons/ic_user.png" , width: 20, height: 22,color: Colors.white,),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text("524" , style: TextStyle(color: Colors.white),),
-                                      Spacer(),
-                                      Image.asset("assets/Icons/ic_checklist white.png", width: 20, height: 22,color: Colors.white,),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text("16",style: TextStyle(color: Colors.white),),
-                                      Spacer(
-                                        flex: 2,
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(50),
-                                            gradient: LinearGradient(colors:[
-                                              Colors.grey.shade200,
-                                              Colors.grey.shade400
-                                            ],begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter
-                                            )
-                                        ),
-                                        child: Text("Follow +"),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-              ]
-                      ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              TextField(
+                controller: emailController,
+                style: TextStyle(color: Colors.white),
+                keyboardType: TextInputType.emailAddress,
+               // obscureText: true,
+               // obscuringCharacter: "8",
+                decoration: InputDecoration(
+                  hintText: "Enter your Email here",
+                  labelText: "Email",
+                  labelStyle: TextStyle(color: Colors.grey.shade400),
+                  prefixIcon:Icon(Icons.email),
+                  prefixIconColor: Colors.white,
+                  filled:false,
+                  fillColor: Colors.white,
+                  enabledBorder:OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(21),
+                    borderSide: BorderSide(
+                      width: 2,
+                      color: Colors.green
                     )
+                  ),    focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(21),
+                    borderSide: BorderSide(
+                        width: 2,
+                        color: Colors.blue
+                    )
+                ),
 
-
-
-                ],
+                ),
+              
+              
+                ),SizedBox(
+                height: 11,
               ),
-            ),
-          ),
-        )
-
-
-
-
-
-
-       
-
-
-
-
-
-
-
-
-
-
-
-          ///Profile Card 1
-       /* body:SizedBox(
-        width: 300,
-        height: 500,
-        child: Card(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadiusGeometry.circular(11)
-          ),
-          elevation: 15,
-          child: Padding(
-            padding: const EdgeInsets.all(7.0),
-            child: Column(
-              children: [
-                Container(
-                  width: 300,
-                  height: 350,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(11),
-                      image: DecorationImage(image: NetworkImage("https://upload.wikimedia.org/wikipedia/commons/a/a4/Salman_Khan_snapped_at_the_Angry_Young_Men_trailer_launch.jpg"),fit: BoxFit.cover)
-                  ),
-                ),
-
-                SizedBox(
-                  height: 2,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 11.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text("Salman Khan", style: TextStyle(fontSize: 19, fontWeight: FontWeight(50)),),
-                          SizedBox(
-                            width: 3,
-                          ),
-                          Image.asset("assets/Icons/ic_approved.png", width: 22, height: 25,)
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(child: Text("Product designer who focuses on simplicity and usability" , style: TextStyle(fontWeight:FontWeight.w500, fontSize: 13, color: Colors.grey),)),
-
-
-
-
-                        ],
-                      ),SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Image.asset("assets/Icons/ic_user.png" , width: 20, height: 22,),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text("524"),
-                          Spacer(),
-                          Image.asset("assets/Icons/ic_checklist white.png", width: 20, height: 22,),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text("16"),
-                          Spacer(
-                            flex: 2,
-                          ),
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                gradient: LinearGradient(colors:[
-                                  Colors.grey.shade200,
-                                  Colors.grey.shade400
-                                ],begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter
-                                )
-                            ),
-                            child: Text("Follow +"),
-                          )
-                        ],
+              TextField(
+                controller: phoneNumberController,
+                style: TextStyle(color: Colors.white),
+                keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                // obscureText: true,
+                // obscuringCharacter: "8",
+                decoration: InputDecoration(
+                  hintText: "Enter your Phone Number here",
+                  labelText: "Phone Number",
+                  labelStyle: TextStyle(color: Colors.grey.shade400),
+                  prefixIcon: Icon(Icons.call),
+                  prefixIconColor: Colors.white,
+                  filled: false,
+                  fillColor: Colors.white,
+                  enabledBorder:OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(21),
+                      borderSide: BorderSide(
+                          width: 2,
+                          color: Colors.green
                       )
-                    ],
-                  ),
+                  ),    focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(21),
+                    borderSide: BorderSide(
+                        width: 2,
+                        color: Colors.blue
+                    )
                 ),
 
-              ],
-            ),
+                ),
+              ),SizedBox(
+                height: 11,
+              ),
+              StatefulBuilder(
+                builder: (context , ss) {
+                  return TextField(
+                    controller: passWordController,
+                    style: TextStyle(color: Colors.white),
+                    keyboardType: TextInputType.emailAddress,
+                     obscureText: true,
+                    // obscuringCharacter: "8",
+                    decoration: InputDecoration(
+                      hintText: "Enter your Password here",
+                      labelText: "Password",
+                      labelStyle: TextStyle(color: Colors.grey.shade400),
+                      prefixIcon: Icon(Icons.password),
+                      prefixIconColor: Colors.white,
+                      suffixIcon: InkWell(
+                          onTap: (){
+                            ss((){});
+
+                          },
+                          child: Icon(Icons.visibility_off )),
+                      suffixIconColor: Colors.white,
+                      filled: false,
+                      fillColor: Colors.white,
+                      enabledBorder:OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(21),
+                          borderSide: BorderSide(
+                              width: 2,
+                              color: Colors.green
+                          )
+                      ),    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(21),
+                        borderSide: BorderSide(
+                            width: 2,
+                            color: Colors.blue
+                        )
+                    ),
+
+                    ),
+                  );
+                }
+              )
+
+
+
+
+             , SizedBox(
+                height: 50,
+              )
+             , ElevatedButton
+                (onPressed:(){}, child: Text("Sign in"),
+             style: ElevatedButton.styleFrom(backgroundColor:Colors.blue , foregroundColor: Colors.white ),),
+            ],
           ),
-        ),
-      )*/
+          ),
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       );
   }
-  }
+}
 
